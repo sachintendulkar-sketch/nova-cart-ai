@@ -1,0 +1,16 @@
+# Optional: Render "Blueprint". You can also create the service by hand (see README).
+services:
+  - type: web
+    name: novacart-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
